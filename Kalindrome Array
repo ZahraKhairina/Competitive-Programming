@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  
+  ll t;
+  cin >> t;
+  while(t--){
+    ll n;
+    cin >> n;
+    
+    vector<ll> a(n);
+
+    for (ll i = 0; i < n; i++){
+      cin >> a[i];
+    }
+    
+    if (n == 1 || n == 2){
+      cout << "YES" << endl;
+      continue;
+    }
+
+    ll l = 0, r = n-1;
+    ll x1 = 0, x2 = 0;
+
+    bool bisa = true;
+    while(l < r){
+      if (a[l] != a[r]){
+        x1 = a[l];
+        x2 = a[r];
+        bisa = false;
+        break;
+      }
+      l++;
+      r--;
+    }
+
+    if (bisa) cout << "YES" << endl;
+    
+    else{
+      bool coba = true;
+      l = 0, r = n-1;
+      while(l < r){
+        if (a[l] == x1) l++;
+        else if (a[r] == x1) r--;
+        else if (a[r] != a[l]){
+          coba = false;
+          break;
+        }
+        else{
+          l++;
+          r--;
+        }
+      }
+      if (coba){
+        cout << "YES" << endl;
+        continue;
+      }
+
+      l = 0, r = n -1;
+      coba = true;
+      while(l < r){
+        if (a[l] == x2) l++;
+        else if (a[r] == x2) r--;
+        else if (a[r] != a[l]){
+          coba = false;
+          break;
+        }
+        else{
+          l++;
+          r--;
+        }
+      }
+      if (coba){
+        cout << "YES" << endl;
+      }
+      else cout << "NO" << endl;
+    }
+  }
+}
