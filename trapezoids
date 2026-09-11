@@ -1,0 +1,9 @@
+program trapezoidz;
+uses crt;
+var
+  a, b, h, area: integer;
+begin
+    read(a, b, h);
+    area := (a + b) * h div 2;
+    writeln(area);
+end.
