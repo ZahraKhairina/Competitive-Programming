@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+typedef long long ll;
+
+int main(){
+    ll t;
+    cin >> t;
+    ll sum = 0;
+    
+    while (t--){
+        ll a, b;
+        cin >> a >> b;
+        
+        ll n = b - a + 1;
+        sum += (2*a + (n- 1)) * n/2;
+        
+    }
+    
+    cout << sum << endl;
+}
