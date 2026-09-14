@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+  ll a, b;
+  cin >> a >> b;
+
+  if (b > a) swap(a,b);
+
+  ll ans = 0;
+  while(b > 0){
+    if (a % b  == 0){
+      ans += (a / b) - 1;
+      break;
+    }
+    ans += a/ b;
+    ll temp = a % b;
+
+    a = b;
+    b = temp;
+  }
+
+  cout << ans << endl;
+
+  return 0;
+}
