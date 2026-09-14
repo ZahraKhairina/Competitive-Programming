@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+  ll t;
+  cin >> t;
+  while (t--){
+    ll x;
+    cin >> x;
+
+    ll p = 0, q = 0;
+    for (ll i = 2; i*i*i <= x; i++){
+      if (x % i != 0) continue;
+      if (x % (i*i) == 0){
+        p = i;
+        q = x / (i*i);
+      }
+      else {
+        q = i;
+        p = round(sqrt(x / i));
+      }
+
+      break;
+    }
+
+    cout << p << " " << q << endl;
+  }
+}
+
+/*
+kenapa pakai komplesitas akar 3 dari n? karena worst case nya adalah p^3
+*/
