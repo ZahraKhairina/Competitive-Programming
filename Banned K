@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    unordered_map <ll, ll> freq;
+    
+    for (ll i = 0; i < n; i++){
+        cin >> a[i];
+        freq[a[i]]++;
+    }
+    
+    unordered_map <ll, ll> komb;
+    unordered_map <ll, ll> kombmin1;
+    ll total = 0;
+    for (auto [angka,banyak] : freq){
+        komb[angka] += (banyak)*(banyak-1)/2;
+        kombmin1[angka] += (banyak - 1)*(banyak- 2)/2;
+        total += (banyak)*(banyak - 1)/ 2;
+    }
+    
+    for (ll i = 0; i < n; i++){
+        cout << total - komb[a[i]] + kombmin1[a[i]] << endl;
+    }
+}
