@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> c(n);
+    
+    ll sum = 0;
+    for (ll i = 0; i < n; i++){
+        cin >> c[i];
+        sum += c[i];
+    }
+    
+    vector<ll> d(k);
+    vector<bool> capital(n, false);
+    for (ll i = 0; i < k; i++){
+        cin >> d[i];
+        d[i]--;
+        capital[d[i]] = true;
+    }
+    
+    ll ans = 0;
+    for (ll i = 0; i < k; i++){
+        ll j = d[i];
+        ans += c[j] * (sum - c[j]);
+        sum -= c[j];
+    }
+    
+    for (ll i = 0; i < n; i++){
+        ll next = (i + 1) % n;
+        if (!capital[i] && !capital[next]){
+            ans += c[i] * c[next]; // Diubah dari sum ke ans
+        }
+    }
+    
+    cout << ans << "\n";
+    return 0;
+}
