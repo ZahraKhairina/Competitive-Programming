@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+ll gcd(ll a, ll b){
+  if (b == 0) return a;
+  else return gcd(b, a%b);
+}
+
+ll lcm (ll a, ll b){
+  return a / gcd(a,b) * b;
+}
+
+int main() {
+  ll t;
+  cin >> t;
+   while(t--){
+    ll n, x, y;
+    cin >> n >> x >> y;
+
+    ll k = n / lcm(x,y);
+    x = n / x;
+    y = n / y;
+    x -= k; 
+    y -= k;   
+    
+    ll sumx = x*(2*n + (- x + 1))/2;
+    ll sumy = y*(2*1 + (y - 1))/2;
+
+    cout << sumx - sumy << endl;
+   }
+}
