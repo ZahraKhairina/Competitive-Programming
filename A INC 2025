@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+using Data = tuple<string, ll, ll>;
+
+bool comp (const Data &a, const Data &b){
+  if (get<1>(a) == get<1>(b)){
+
+    if(get<2>(a) == get<2>(b)){
+      string str_a = get<0>(a);
+      string str_b = get<0>(b);
+
+      if (str_a[0] != str_b[0]) {
+          return str_a[0] < str_b[0];
+      }
+      
+      return str_a < str_b;
+    }
+
+    else return get<2>(a) < get<2>(b);
+  }
+
+  else{
+    return get<1>(a) > get<1>(b);
+  }
+}
+
+int main(){
+  ll n;
+  cin >> n;
+  
+  vector<Data> p;
+  while (n--){
+    string s;
+    cin >> s;
+    ll a, b , c, d;
+    cin >> a >> b >> c >> d;
+    ll poin = a + c;
+    ll pen = b + d;
+    p.push_back({s, poin, pen});
+  }
+
+  sort(p.begin(), p.end(), comp);
+
+  for(auto [nama, poin, penalti] : p){
+    cout << nama << endl;
+  }
+}
